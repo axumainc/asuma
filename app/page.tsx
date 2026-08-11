@@ -13,6 +13,7 @@ import {
   Clock,
   Check,
   ChevronDown,
+  ChevronRight,
   Send,
   Shield,
   MessageSquare,
@@ -22,8 +23,21 @@ import {
   Star,
   Crown,
   Coins,
+  Home as HomeIcon,
+  BookOpen,
+  User,
+  HelpCircle,
+  Code,
+  Image as ImageIcon,
+  MapPin,
+  ArrowUpRight,
+  Info,
+  TrendingUp,
+  UserPlus,
+  LogIn,
 } from "lucide-react";
 
+const ASSET_BASE = "https://pixelscraper.vercel.app";
 const WA_NUMBER = "6281227856788";
 
 function waLink(text: string) {
@@ -33,45 +47,21 @@ function waLink(text: string) {
 }
 
 const NAV_LINKS = [
-  { label: "Home", href: "#" },
-  { label: "Tools", href: "/scrape" },
-  { label: "Cara Kerja", href: "#how-it-works" },
-  { label: "Fitur", href: "#features" },
-  { label: "Testimoni", href: "#testimonials" },
-  { label: "Harga", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
-];
-
-const STEPS = [
-  {
-    label: "Langkah 01",
-    title: "Tempel URL Target",
-    desc: "Cukup salin dan tempel alamat URL halaman website yang ingin Anda kloning. Sistem kami mendukung protokol HTTP/HTTPS untuk halaman arahan, portofolio, dokumentasi, dan lainnya.",
-    icon: Globe,
-    accent: "bg-[#FFF5EB] border-[#FFEDD5] text-[#F59E0B]",
-  },
-  {
-    label: "Langkah 02",
-    title: "Inlining Aset & Render DOM",
-    desc: "Sistem kami merender DOM target secara dinamis dengan engine browser headless cloud, mengunduh seluruh stylesheet, skrip, font web, dan gambar eksternal, lalu menyusunnya menjadi file HTML mandiri.",
-    icon: Cpu,
-    accent: "bg-[#EFF6FF] border-[#DBEAFE] text-[#3B82F6]",
-  },
-  {
-    label: "Langkah 03",
-    title: "Visual Edit & Ekspor",
-    desc: "Setelah proses kloning selesai, Anda dapat langsung melakukan pratinjau interaktif, mengedit teks secara visual di browser, melihat source code yang bersih, atau membuka Visual Editor berbasis Monaco Editor.",
-    icon: FileCode,
-    accent: "bg-[#ECFDF5] border-[#D1FAE5] text-[#10B981]",
-  },
+  { label: "Home", href: "#", icon: HomeIcon },
+  { label: "Tools", href: "/scrape", icon: Sparkles },
+  { label: "Cara Kerja", href: "#how-it-works", icon: BookOpen },
+  { label: "Fitur", href: "#features", icon: Sparkles },
+  { label: "Testimoni", href: "#testimonials", icon: User },
+  { label: "Harga", href: "#pricing", icon: Coins },
+  { label: "FAQ", href: "#faq", icon: HelpCircle },
+  { label: "Contact", href: "#contact", icon: Mail },
 ];
 
 const FEATURES = [
   {
     title: "Inlining Aset Otomatis",
     desc: "Semua stylesheet, skrip, gambar, dan font eksternal diunduh dan disematkan langsung (inline) ke dalam file HTML tunggal.",
-    icon: FileCode,
+    icon: Code,
   },
   {
     title: "Monaco Editor (VS Code Core)",
@@ -106,18 +96,21 @@ const TESTIMONIALS = [
     role: "Lead Front-end Developer, Bandung",
     quote:
       "PixelScraper membantu tim kami menduplikasi landing page portofolio klien dengan sangat akurat. Proses inlining aset berjalan mulus, menghemat waktu coding kami hingga 80%.",
+    img: `${ASSET_BASE}/setyadi.png`,
   },
   {
     name: "Rian Hermawan",
     role: "Full-stack Developer, Jakarta",
     quote:
       "Proses scrape HTML dari platform ini luar biasa. Semua script, stylesheet, dan aset eksternal di-inline secara otomatis dan rapi, menghasilkan satu file HTML tunggal yang langsung siap di-upload.",
+    img: `${ASSET_BASE}/rian.png`,
   },
   {
     name: "Amanda Widjaja",
     role: "UI/UX Engineer, Surabaya",
     quote:
       "Terintegrasi langsung dengan Monaco Editor (VS Code) membuat penyesuaian CSS hasil kloning menjadi sangat gampang. Hasil scraping bersih dari link eksternal yang rusak.",
+    img: `${ASSET_BASE}/amanda.png`,
   },
 ];
 
@@ -232,13 +225,18 @@ export default function Home() {
       <header className="fixed top-6 left-4 right-4 lg:left-0 lg:right-0 z-40 mx-auto bg-[#1A1A1A]/95 backdrop-blur-md text-white rounded-full px-6 lg:px-8 py-3 flex items-center justify-between shadow-[0_12px_32px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.05)_inset] border border-white/10 w-[95%] xl:w-full max-w-5xl">
         <div className="flex items-center shrink-0">
           <a href="#" className="flex items-center space-x-2">
-            <span className="w-7 h-7 rounded-[8px] bg-white/10 mr-2 flex items-center justify-center text-xs font-bold">
-              PS
-            </span>
+            <img
+              src={`${ASSET_BASE}/icon.png`}
+              alt="PixelScraper Logo"
+              className="w-7 h-7 object-contain mr-2 rounded-[8px]"
+            />
             <span className="font-bold tracking-tight text-sm lg:text-base text-white">
               PixelScraper
             </span>
           </a>
+          <span className="hidden lg:inline text-white/20 select-none ml-4 pl-1 text-[11px] font-normal">
+            |
+          </span>
         </div>
 
         <nav className="hidden lg:flex items-center gap-1.5 xl:gap-3.5 text-[12.5px] xl:text-[13.5px] font-semibold text-gray-300">
@@ -256,6 +254,7 @@ export default function Home() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <span className="text-white/20 select-none mr-2.5 pr-0.5 text-[11px] font-normal">|</span>
           <button className="text-[13px] font-semibold text-gray-300 hover:text-white transition-colors px-2 bg-transparent border-0 cursor-pointer">
             Masuk
           </button>
@@ -269,24 +268,57 @@ export default function Home() {
           aria-label="Buka Menu"
           className="flex lg:hidden items-center justify-center h-8.5 w-8.5 rounded-[8px] bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer border-0"
         >
-          {mobileMenuOpen ? <X className="h-4.5 w-4.5" /> : <Menu className="h-4.5 w-4.5" />}
+          <Menu className="h-4.5 w-4.5" />
         </button>
       </header>
 
+      {/* Full-screen mobile menu overlay */}
       {mobileMenuOpen && (
-        <div className="fixed top-24 left-4 right-4 z-30 lg:hidden bg-[#1A1A1A]/98 backdrop-blur-md text-white rounded-3xl p-5 shadow-2xl border border-white/10">
-          <nav className="flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 transition"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+        <div className="fixed inset-0 z-50 lg:hidden flex flex-col p-4">
+          <div className="bg-[#1A1A1A]/98 backdrop-blur-md rounded-full px-6 py-3 flex items-center justify-between shadow-lg border border-white/10 mb-3">
+            <div className="flex items-center gap-2">
+              <span className="w-7 h-7 rounded-[8px] bg-[#2D2D2F] text-white flex items-center justify-center text-[10px] font-bold">
+                PS
+              </span>
+              <span className="font-bold text-white text-sm">PixelScraper</span>
+            </div>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Tutup Menu"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition"
+            >
+              <X className="h-4.5 w-4.5" />
+            </button>
+          </div>
+
+          <div className="flex-1 bg-[#1A1A1A] rounded-[28px] p-3 flex flex-col shadow-2xl overflow-y-auto">
+            <nav className="flex flex-col gap-1 py-2">
+              {NAV_LINKS.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-white/90 hover:bg-white/5 transition"
+                  >
+                    <Icon className="w-5 h-5 text-white/60" strokeWidth={1.75} />
+                    <span className="text-[15px] font-semibold">{link.label}</span>
+                  </a>
+                );
+              })}
+            </nav>
+            <div className="mt-auto pt-4 border-t border-white/10 flex items-center gap-3">
+              <button className="flex-1 flex items-center justify-center gap-2 border border-white/20 text-white px-4 py-3 rounded-full text-[13px] font-bold">
+                <LogIn className="w-4 h-4" />
+                Masuk
+              </button>
+              <button className="flex-1 flex items-center justify-center gap-2 bg-white text-black px-4 py-3 rounded-full text-[13px] font-bold">
+                <UserPlus className="w-4 h-4" />
+                Daftar
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
@@ -332,16 +364,112 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Workspace dashboard preview */}
+          {/* Workspace dashboard preview with floating decorative cards */}
           <div className="px-4 md:px-8">
             <div id="dashboard-section" className="relative w-full max-w-[1040px] z-20 mx-auto mt-16 scroll-mt-24">
-              <div className="dashboard-border relative z-10 mx-auto w-full">
+              {/* Floating: Server Aktif */}
+              <div className="absolute -left-12 md:-left-20 top-[50%] z-30 animate-float-slow hidden md:block">
+                <div className="bg-white/95 backdrop-blur-xl rounded-full p-2.5 pr-4 flex items-center gap-3 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.8)_inset] border border-white">
+                  <div className="bg-[#007AFF] text-white p-1.5 rounded-full">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  </div>
+                  <span className="text-[13px] font-bold text-gray-900">Server Aktif</span>
+                  <div className="flex -space-x-2.5 pl-1">
+                    {["sg", "us", "eu"].map((code, i) => (
+                      <div
+                        key={code}
+                        className="w-8 h-8 rounded-full border-2 border-white overflow-hidden relative shadow-sm bg-white"
+                        style={{ zIndex: 10 + i }}
+                      >
+                        <img
+                          src={`https://flagcdn.com/w80/${code}.png`}
+                          className="w-full h-full object-cover"
+                          alt={code.toUpperCase()}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating: Kapasitas Kloning */}
+              <div className="absolute -bottom-8 left-[-10%] z-30 animate-float-delayed hidden md:block">
+                <div className="bg-white/95 backdrop-blur-xl rounded-[20px] p-5 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.8)_inset] border border-white w-[230px] text-left">
+                  <h4 className="font-bold text-[14px] text-gray-900 mb-0.5">Kapasitas Kloning</h4>
+                  <p className="text-[12px] text-gray-400 font-medium mb-3">Server Latency: 240ms</p>
+                  <div className="flex justify-between items-end mb-1.5 text-[12px] font-bold">
+                    <span className="text-gray-900">Cloud Status</span>
+                    <span className="text-emerald-600">99.9% Online</span>
+                  </div>
+                  <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div className="w-full bg-[#4ecdc4] h-full rounded-full" />
+                  </div>
+                  <div className="text-[10px] font-bold text-gray-500 text-right mt-1.5">
+                    100% Ready
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating: Auto Asset Optimization */}
+              <div className="absolute top-[-4%] -right-24 xl:-right-28 z-30 animate-float-fast hidden lg:block">
+                <div className="bg-white/95 backdrop-blur-xl rounded-full p-2.5 pr-4 flex items-center gap-3 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.8)_inset] border border-white">
+                  <div className="flex items-center gap-1.5 text-[13px] font-bold text-gray-900 pl-2">
+                    <Sparkles className="w-4 h-4 text-[#4ecdc4]" />
+                    Auto Asset Optimization
+                  </div>
+                  <div className="flex gap-1.5 mt-0.5">
+                    <div className="flex items-center gap-1 bg-blue-50 text-[#1572B6] text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-100/50">
+                      CSS
+                    </div>
+                    <div className="flex items-center gap-1 bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-100/50">
+                      <ImageIcon className="w-2.5 h-2.5" />
+                      IMG
+                    </div>
+                    <div className="flex items-center gap-1 bg-yellow-50 text-yellow-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-yellow-200/50">
+                      JS
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating: Target card */}
+              <div className="absolute -bottom-12 right-[-2%] z-30 animate-float-slow hidden md:block">
+                <div className="bg-white/95 backdrop-blur-xl rounded-[20px] p-5 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.8)_inset] border border-white w-[350px] text-left">
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="font-bold text-[14px] leading-snug w-[60%] text-gray-900 truncate">
+                      Target: Ahmadnh.is-a.dev
+                    </h4>
+                    <span className="text-[13px] font-bold text-gray-800">$0.00 / Free</span>
+                  </div>
+                  <div className="flex justify-between items-center mt-4">
+                    <div className="flex items-center gap-2 text-[10.5px] text-gray-400 font-semibold">
+                      <span className="flex items-center gap-1.5">
+                        <Rocket className="w-3.5 h-3.5 text-gray-300" />
+                        Cloud Scrape
+                      </span>
+                      <span className="text-gray-200">|</span>
+                      <span className="flex items-center gap-1.5">
+                        <Globe className="w-3.5 h-3.5 text-gray-300" />
+                        HTML5
+                      </span>
+                      <span className="text-gray-200">|</span>
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5 text-gray-300" />
+                        2.1s
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">
+                      Optimal
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative z-10 mx-auto w-full">
                 <div className="bg-white rounded-[24px] overflow-hidden flex flex-col md:flex-row min-h-[520px] w-full border border-gray-100/50 shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)]">
                   <div className="w-full md:w-[220px] bg-[#FCFCFA] border-r border-gray-100 p-5 hidden md:flex flex-col text-left">
                     <div className="flex items-center justify-center gap-2.5 font-bold text-[15px] mb-10 mt-2 px-2 text-gray-900 tracking-tight">
-                      <span className="w-5 h-5 rounded-[6px] bg-gray-900 text-white flex items-center justify-center text-[9px]">
-                        PS
-                      </span>
+                      <img src={`${ASSET_BASE}/icon.png`} alt="Logo" className="w-5 h-5 object-contain rounded-[6px]" />
                       PixelScraper
                     </div>
                     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-3">
@@ -403,6 +531,15 @@ export default function Home() {
                             secara otomatis.
                           </p>
                         </div>
+                        <div className="flex gap-2 shrink-0 justify-center sm:justify-start">
+                          <button className="bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-[12px] font-bold flex items-center gap-1.5 shadow-sm transition">
+                            <HelpCircle className="w-3.5 h-3.5 text-teal-500" />
+                            Panduan
+                          </button>
+                          <button className="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-[12px] font-bold flex items-center gap-1.5 shadow-sm transition">
+                            Clear
+                          </button>
+                        </div>
                       </div>
 
                       <div className="bg-white border border-gray-100 p-6 rounded-[24px] shadow-[0_4px_24px_rgba(0,0,0,0.02)] mb-6">
@@ -430,18 +567,24 @@ export default function Home() {
 
                       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                         {[
-                          { label: "Total Kloning", value: "1.2M+", tag: "Online" },
-                          { label: "Avg Speed", value: "2.8s", tag: "Optimal" },
-                          { label: "Success Rate", value: "99.1%", tag: "99%" },
-                          { label: "Sisa Token", value: "1 Free", tag: "Aktif" },
+                          { label: "Total Kloning", value: "1.2M+", tag: "Online", sub: "Database CDN" },
+                          { label: "Avg Speed", value: "2.8s", tag: "Optimal", sub: "Rendering node" },
+                          { label: "Success Rate", value: "99.1%", tag: "99%", sub: "Success rate" },
+                          { label: "Sisa Token", value: "1 Free", tag: "Aktif", sub: "Token akun Anda" },
                         ].map((stat) => (
                           <div
                             key={stat.label}
                             className="bg-white border border-gray-100 rounded-[20px] p-4.5 shadow-[0_4px_20px_rgba(0,0,0,0.01)] relative text-left"
                           >
-                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-2.5">
-                              {stat.label}
-                            </span>
+                            <div className="flex justify-between items-center mb-2.5">
+                              <span className="text-[10px] font-bold text-gray-400 flex items-center gap-1 uppercase tracking-wider">
+                                {stat.label}
+                                <Info className="w-3 h-3 text-gray-300" />
+                              </span>
+                              <div className="w-5.5 h-5.5 rounded-full bg-gray-50 flex items-center justify-center border border-gray-100">
+                                <ArrowUpRight className="w-3 h-3 text-gray-450" />
+                              </div>
+                            </div>
                             <div className="text-[20px] md:text-[22px] font-extrabold text-gray-900 tracking-tight">
                               {stat.value}
                             </div>
@@ -449,6 +592,7 @@ export default function Home() {
                               <span className="text-emerald-600 bg-emerald-50 px-1 py-0.5 rounded border border-emerald-100">
                                 {stat.tag}
                               </span>
+                              <span className="text-gray-400">{stat.sub}</span>
                             </div>
                           </div>
                         ))}
@@ -489,44 +633,348 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-12 md:gap-20">
-                {STEPS.map((step, i) => {
-                  const Icon = step.icon;
-                  return (
-                    <div
-                      key={step.title}
-                      className={`flex flex-col ${
-                        i % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
-                      } items-center gap-12 lg:gap-16`}
+              <div className="flex flex-col gap-16 md:gap-24">
+                {/* Step 1 */}
+                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                  <div className="flex-1 max-w-[480px] text-left">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center border border-[#FFEDD5] bg-[#FFF5EB] shadow-sm">
+                        <Globe className="w-6 h-6 text-[#F59E0B]" />
+                      </div>
+                      <div>
+                        <span className="text-[11px] font-bold text-gray-450 uppercase tracking-widest block mb-0.5">
+                          Langkah 01
+                        </span>
+                        <h3 className="text-[1.5rem] font-bold text-gray-900 tracking-tight leading-tight">
+                          Tempel URL Target
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-gray-500 font-medium text-[15px] leading-relaxed mb-6 text-justify">
+                      Cukup salin dan tempel alamat URL halaman website yang ingin Anda kloning.
+                      Sistem kami mendukung protokol HTTP/HTTPS untuk halaman arahan, portofolio,
+                      dokumentasi, dan lainnya.
+                    </p>
+                    <a
+                      href="#dashboard-section"
+                      className="inline-flex items-center gap-2 text-[13px] font-bold text-gray-900 bg-white border border-gray-200 px-5 py-2.5 rounded-full hover:bg-gray-50 hover:gap-3 transition-all shadow-sm group"
                     >
-                      <div className="flex-1 max-w-[480px] text-left">
-                        <div className="flex items-center gap-4 mb-6">
-                          <div
-                            className={`w-14 h-14 rounded-2xl flex items-center justify-center border shadow-sm ${step.accent}`}
-                          >
-                            <Icon className="w-6 h-6" />
-                          </div>
+                      Mulai Kloning
+                      <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </a>
+                  </div>
+                  <div className="flex-1 max-w-[520px] w-full relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#FFF5EB] to-[#FFFBF5] rounded-[32px] blur-2xl opacity-50 scale-95" />
+                    <div className="relative bg-white rounded-[20px] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-5 w-full overflow-hidden text-left">
+                      <div className="flex items-center justify-between mb-5">
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={`${ASSET_BASE}/icon.png`}
+                            alt="PixelScraper Logo"
+                            className="w-11 h-11 object-contain rounded-2xl shadow-sm border border-gray-150/40"
+                          />
                           <div>
-                            <span className="text-[11px] font-bold text-gray-450 uppercase tracking-widest block mb-0.5">
-                              {step.label}
-                            </span>
-                            <h3 className="text-[1.5rem] font-bold text-gray-900 tracking-tight leading-tight">
-                              {step.title}
-                            </h3>
+                            <h5 className="font-bold text-[13px] text-gray-900 leading-tight">
+                              PixelScraper Engine
+                            </h5>
+                            <p className="text-[10px] text-gray-400 font-medium flex items-center gap-1">
+                              <MapPin className="w-3 h-3" />
+                              Cloud Server Node • Cloudflare CDN
+                            </p>
                           </div>
                         </div>
-                        <p className="text-gray-500 font-medium text-[15px] leading-relaxed mb-6 text-justify">
-                          {step.desc}
-                        </p>
+                        <div className="flex items-center gap-1">
+                          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                          <span className="text-[9px] font-bold text-emerald-500 uppercase tracking-widest">
+                            Active
+                          </span>
+                        </div>
                       </div>
-                      <div className="flex-1 max-w-[520px] w-full relative">
-                        <div className="bg-white rounded-[20px] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-8 w-full h-52 flex items-center justify-center">
-                          <Icon className="w-16 h-16 text-gray-200" />
+                      <div className="mb-4">
+                        <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-2">
+                          Protokol Pemrosesan
+                        </p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {["DOM Parsing", "CSS Inlining", "JS Bundle Pack", "Image Base64", "Font Inlining"].map(
+                            (tag, i) => (
+                              <span
+                                key={tag}
+                                className={`text-[10px] font-bold px-2.5 py-1 rounded-full border transition-all ${
+                                  i % 2 === 0
+                                    ? "bg-[#2D2D2F] text-white border-[#2D2D2F]"
+                                    : "bg-white text-gray-500 border-gray-200"
+                                }`}
+                              >
+                                {tag}
+                              </span>
+                            )
+                          )}
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        {[
+                          { label: "Success Runs", value: "1.2M+", sub: "+4.5k today" },
+                          { label: "Avg Speed", value: "2.8 Detik", sub: "↑ 12% faster" },
+                          { label: "Uptime", value: "99.98%", sub: "Stable Node" },
+                        ].map((s) => (
+                          <div key={s.label} className="bg-[#FAFAF8] rounded-xl p-3 border border-gray-100/60">
+                            <p className="text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
+                              {s.label}
+                            </p>
+                            <p className="text-[16px] font-bold text-gray-900 tracking-tight">{s.value}</p>
+                            <p className="text-[9px] font-medium text-gray-400">{s.sub}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-4 bg-gradient-to-r from-[#ECFDF5] to-[#F0FDF4] rounded-xl p-3 border border-emerald-100/60">
+                        <div className="flex justify-between items-center mb-1.5">
+                          <span className="text-[10px] font-bold text-emerald-700">
+                            Kompatibilitas Render
+                          </span>
+                          <span className="text-[10px] font-bold text-emerald-600">98%</span>
+                        </div>
+                        <div className="h-1.5 bg-emerald-100 rounded-full overflow-hidden">
+                          <div className="w-[98%] h-full bg-emerald-500 rounded-full" />
                         </div>
                       </div>
                     </div>
-                  );
-                })}
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
+                  <div className="flex-1 max-w-[480px] text-left">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center border border-[#DBEAFE] bg-[#EFF6FF] shadow-sm">
+                        <Cpu className="w-6 h-6 text-[#3B82F6]" />
+                      </div>
+                      <div>
+                        <span className="text-[11px] font-bold text-gray-450 uppercase tracking-widest block mb-0.5">
+                          Langkah 02
+                        </span>
+                        <h3 className="text-[1.5rem] font-bold text-gray-900 tracking-tight leading-tight">
+                          Inlining Aset &amp; Render DOM
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-gray-500 font-medium text-[15px] leading-relaxed mb-6 text-justify">
+                      Sistem kami merender DOM target secara dinamis dengan engine browser
+                      headless cloud, mengunduh seluruh stylesheet, skrip, font web, dan gambar
+                      eksternal, lalu menyusunnya menjadi file HTML mandiri.
+                    </p>
+                    <a
+                      href="#features"
+                      className="inline-flex items-center gap-2 text-[13px] font-bold text-gray-900 bg-white border border-gray-200 px-5 py-2.5 rounded-full hover:bg-gray-50 hover:gap-3 transition-all shadow-sm group"
+                    >
+                      Pelajari Teknologi
+                      <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </a>
+                  </div>
+                  <div className="flex-1 max-w-[520px] w-full relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#EFF6FF] to-[#F5F8FF] rounded-[32px] blur-2xl opacity-50 scale-95" />
+                    <div className="relative bg-white rounded-[20px] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-5 w-full overflow-hidden text-left">
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="flex-1 relative">
+                          <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                          <div className="bg-[#F8F8F6] rounded-full py-2 pl-8 pr-3 text-[11px] text-gray-550 font-medium border border-gray-100/60">
+                            Processing target URL page assets...
+                          </div>
+                        </div>
+                        <div className="bg-[#2D2D2F] text-white p-2 rounded-xl">
+                          <Code className="w-4 h-4 text-[#4ecdc4]" />
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 mb-3.5">
+                        <div className="flex items-center gap-1.5 bg-violet-50 px-2.5 py-1 rounded-full border border-violet-100">
+                          <Layers className="w-3 h-3 text-violet-500 animate-pulse" />
+                          <span className="text-[9px] font-bold text-violet-600 uppercase tracking-wider">
+                            Inlining Active
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-gray-450 font-medium">
+                          Memproses 32 aset eksternal
+                        </span>
+                      </div>
+                      <div className="flex flex-col gap-2.5">
+                        {[
+                          { name: "Main Stylesheet (Tailwind)", sub: "Pecah ke gaya inline style tag", pct: "100%", status: "INLINED" },
+                          { name: "Header Background Image", sub: "Konversi ke format Base64", pct: "100%", status: "INLINED" },
+                          { name: "Interactive Scripts Bundle", sub: "Wrapping scripts bundles", pct: "82%", status: "PROCESSING" },
+                        ].map((item) => (
+                          <div
+                            key={item.name}
+                            className="flex items-center gap-3 p-3 rounded-2xl border transition-all bg-white border-gray-100"
+                          >
+                            <div className="w-[38px] h-[38px] rounded-full bg-gray-50 flex items-center justify-center border-2 border-white shadow-sm shrink-0">
+                              <FileCode className="w-4 h-4 text-gray-400" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[12px] font-bold text-gray-900 truncate">
+                                  {item.name}
+                                </span>
+                                <span
+                                  className={`text-[8px] font-bold px-1.5 py-0.5 rounded-full border ${
+                                    item.status === "INLINED"
+                                      ? "text-emerald-650 bg-emerald-50 border-emerald-100"
+                                      : "text-amber-600 bg-amber-50 border-amber-100"
+                                  }`}
+                                >
+                                  {item.status === "INLINED" ? "✔ INLINED" : "⚡ PROCESSING"}
+                                </span>
+                              </div>
+                              <p className="text-[10px] text-gray-455 font-medium">{item.sub}</p>
+                            </div>
+                            <div
+                              className={`text-[11px] font-bold px-2 py-0.5 rounded-full border ${
+                                item.status === "INLINED"
+                                  ? "bg-emerald-50 text-emerald-600 border-emerald-100"
+                                  : "bg-blue-50 text-blue-600 border-blue-100"
+                              }`}
+                            >
+                              {item.pct}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-4 bg-[#FAFAF8] rounded-xl p-3.5 border border-gray-100/60">
+                        <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-2.5">
+                          Progres Konversi Aset
+                        </p>
+                        <div className="flex flex-col gap-2">
+                          {[
+                            { label: "Stylesheets", pct: 100, color: "bg-emerald-500" },
+                            { label: "Images", pct: 100, color: "bg-emerald-500" },
+                            { label: "Scripts", pct: 82, color: "bg-blue-500" },
+                          ].map((row) => (
+                            <div key={row.label} className="flex items-center gap-3">
+                              <span className="text-[10px] font-bold text-gray-400 w-14 shrink-0">
+                                {row.label}
+                              </span>
+                              <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                <div
+                                  className={`h-full rounded-full ${row.color}`}
+                                  style={{ width: `${row.pct}%` }}
+                                />
+                              </div>
+                              <span className="text-[10px] font-bold text-gray-600 w-8 text-right">
+                                {row.pct}%
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                  <div className="flex-1 max-w-[480px] text-left">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center border border-[#D1FAE5] bg-[#ECFDF5] shadow-sm">
+                        <FileCode className="w-6 h-6 text-[#10B981]" />
+                      </div>
+                      <div>
+                        <span className="text-[11px] font-bold text-gray-450 uppercase tracking-widest block mb-0.5">
+                          Langkah 03
+                        </span>
+                        <h3 className="text-[1.5rem] font-bold text-gray-900 tracking-tight leading-tight">
+                          Visual Edit &amp; Ekspor
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-gray-500 font-medium text-[15px] leading-relaxed mb-6 text-justify">
+                      Setelah proses kloning selesai, Anda dapat langsung melakukan pratinjau
+                      interaktif, mengedit teks secara visual di browser, melihat source code yang
+                      bersih, atau membuka Visual Editor berbasis Monaco Editor untuk pengeditan
+                      kode tingkat lanjut.
+                    </p>
+                    <a
+                      href="#pricing"
+                      className="inline-flex items-center gap-2 text-[13px] font-bold text-gray-900 bg-white border border-gray-200 px-5 py-2.5 rounded-full hover:bg-gray-50 hover:gap-3 transition-all shadow-sm group"
+                    >
+                      Lihat Contoh Hasil
+                      <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </a>
+                  </div>
+                  <div className="flex-1 max-w-[520px] w-full relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#ECFDF5] to-[#F0FCFA] rounded-[32px] blur-2xl opacity-50 scale-95" />
+                    <div className="relative bg-white rounded-[20px] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-5 w-full overflow-hidden text-left">
+                      <div className="flex justify-between items-center mb-4">
+                        <div>
+                          <h5 className="font-bold text-[13px] text-gray-900">Hasil Kloning</h5>
+                          <p className="text-[10px] text-gray-400 font-medium">
+                            Proses sukses • index.html siap diunduh
+                          </p>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 mb-4">
+                        {[
+                          { label: "Status", value: "Success", sub: "No errors found", dot: "bg-emerald-500", valColor: "text-emerald-600" },
+                          { label: "File Size", value: "124.8 KB", sub: "Fully compressed", dot: "bg-blue-500", valColor: "text-gray-900" },
+                          { label: "Assets", value: "32 Items", sub: "All inline (0 external)", dot: "bg-purple-500", valColor: "text-gray-900" },
+                        ].map((s) => (
+                          <div key={s.label} className="bg-[#FAFAF8] rounded-xl p-3 border border-gray-100/60">
+                            <div className="flex items-center gap-1.5 mb-2">
+                              <div className={`w-2 h-2 rounded-full ${s.dot}`} />
+                              <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">
+                                {s.label}
+                              </span>
+                            </div>
+                            <p className={`text-[15px] font-bold tracking-tight ${s.valColor}`}>{s.value}</p>
+                            <p className="text-[9px] text-gray-400 font-medium">{s.sub}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="bg-gradient-to-r from-[#2D2D2F] to-[#3A3A3C] rounded-2xl p-4 text-white">
+                        <div className="flex justify-between items-start mb-3">
+                          <div>
+                            <p className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">
+                              Visual Editor Live
+                            </p>
+                            <h5 className="font-bold text-[14px] leading-snug">
+                              Visual Drag &amp; Click Text Editor
+                            </h5>
+                          </div>
+                          <span className="text-[9px] font-bold bg-[#4ecdc4]/20 text-[#4ecdc4] px-2 py-0.5 rounded-full border border-[#4ecdc4]/20">
+                            READY
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-[10px] text-white/50 font-medium">
+                          <Code className="w-3.5 h-3.5 text-[#4ecdc4]" />
+                          Klik komponen apa pun untuk mengedit teks secara langsung.
+                        </div>
+                      </div>
+                      <div className="mt-3 flex items-center justify-between bg-[#FAFAF8] rounded-xl p-3 border border-gray-150/60">
+                        <div className="flex items-center gap-2">
+                          <TrendingUp className="w-4 h-4 text-emerald-500" />
+                          <span className="text-[11px] font-bold text-gray-700">
+                            Waktu Proses Kloning
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[14px] font-bold text-gray-900">2.4 Detik</span>
+                          <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100">
+                            Sangat Cepat
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center mt-16">
+                <div className="w-px h-12 bg-gradient-to-b from-gray-200 to-transparent" />
+                <a
+                  href="#dashboard-section"
+                  className="bg-[#2D2D2F] text-white px-6 py-3 rounded-full font-bold text-[13px] flex items-center gap-2 shadow-lg hover:bg-black hover:-translate-y-0.5 transition-all cursor-pointer"
+                >
+                  <Rocket className="w-4 h-4 text-[#4ecdc4]" />
+                  Mulai Kloning Sekarang
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </a>
               </div>
             </div>
           </section>
@@ -606,9 +1054,11 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gray-100 border border-gray-100 flex items-center justify-center text-xs font-bold text-gray-500">
-                        {t.name.charAt(0)}
-                      </div>
+                      <img
+                        src={t.img}
+                        alt={t.name}
+                        className="w-10 h-10 rounded-full object-cover bg-gray-100 border border-gray-100"
+                      />
                       <div>
                         <p className="font-bold text-[14px] text-gray-900 leading-tight">
                           {t.name}
@@ -1005,9 +1455,11 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 mb-12 text-left">
             <div>
               <div className="flex items-center gap-2.5 font-bold text-[16px] mb-4 text-white">
-                <span className="w-6 h-6 rounded-[6px] bg-white/10 flex items-center justify-center text-[9px]">
-                  PS
-                </span>
+                <img
+                  src={`${ASSET_BASE}/icon.png`}
+                  alt="PixelScraper Logo"
+                  className="w-6 h-6 object-contain rounded-[6px]"
+                />
                 PixelScraper
               </div>
               <p className="text-gray-400 text-[13px] font-medium leading-relaxed text-justify">
